@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="97fccf15-8210-43c6-a08d-f34847848d18" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SocketServer/Client.py" beforeDir="false" afterPath="$PROJECT_DIR$/SocketServer/Client.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SocketServer/Connection.py" beforeDir="false" afterPath="$PROJECT_DIR$/SocketServer/Connection.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -18,8 +18,9 @@
     <SUITE FILE_PATH="coverage/UntiyServer$Socket_Client.coverage" NAME="Socket_Client Coverage Results" MODIFIED="1554876723297" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Sockets" />
     <SUITE FILE_PATH="coverage/UntiyServer$Server.coverage" NAME="Server Coverage Results" MODIFIED="1557643515102" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SocketServer" />
     <SUITE FILE_PATH="coverage/UntiyServer$Main.coverage" NAME="Main Coverage Results" MODIFIED="1557662685078" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Core" />
-    <SUITE FILE_PATH="coverage/PyGameServer$Connection.coverage" NAME="Connection Coverage Results" MODIFIED="1557883722264" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SocketServer" />
+    <SUITE FILE_PATH="coverage/PyGameServer$Connection.coverage" NAME="Connection Coverage Results" MODIFIED="1557932250981" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SocketServer" />
     <SUITE FILE_PATH="coverage/UntiyServer$Socket_Server.coverage" NAME="Socket_Server Coverage Results" MODIFIED="1555125351678" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Sockets" />
+    <SUITE FILE_PATH="coverage/PyGameServer$Client.coverage" NAME="Client Coverage Results" MODIFIED="1557932254096" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SocketServer" />
     <SUITE FILE_PATH="coverage/UntiyServer$Connection.coverage" NAME="Connection Coverage Results" MODIFIED="1557806360597" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SocketServer" />
     <SUITE FILE_PATH="coverage/UntiyServer$Client.coverage" NAME="Client Coverage Results" MODIFIED="1557806375041" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SocketServer" />
   </component>
@@ -79,33 +80,39 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="py" value="6" />
+          <entry key="py" value="8" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="Python" value="6" />
+          <entry key="Python" value="8" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="py" value="1070" />
+          <entry key="py" value="1179" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="Python" value="1070" />
+          <entry key="Python" value="1179" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Core/Conn.py">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/SocketServer/Connection.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret line="8" column="8" selection-start-line="8" selection-start-column="8" selection-end-line="8" selection-end-column="8" />
+            <state relative-caret-position="38">
+              <caret line="55" column="18" selection-start-line="55" selection-start-column="18" selection-end-line="55" selection-end-column="18" />
+              <folding>
+                <element signature="e#369#380#0" expanded="true" />
+                <element signature="e#1116#1357#0" />
+                <marker date="1557933218907" expanded="true" signature="1120:1368" ph="..." />
+                <marker date="1557933218907" expanded="true" signature="1403:2315" ph="..." />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -113,21 +120,10 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/SocketServer/Client.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="320">
-              <caret line="16" column="28" selection-start-line="16" selection-start-column="28" selection-end-line="16" selection-end-column="28" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/SocketServer/Connection.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="160">
-              <caret line="38" column="31" lean-forward="true" selection-start-line="38" selection-start-column="31" selection-end-line="38" selection-end-column="31" />
+            <state relative-caret-position="179">
+              <caret line="31" column="9" lean-forward="true" selection-start-line="31" selection-start-column="9" selection-end-line="31" selection-end-column="9" />
               <folding>
-                <element signature="e#369#380#0" expanded="true" />
-                <marker date="1557899533209" expanded="true" signature="1139:1387" ph="..." />
-                <marker date="1557899533209" expanded="true" signature="1422:2300" ph="..." />
+                <element signature="e#287#300#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -232,7 +228,7 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Python" />
+    <property name="settings.editor.selected.configurable" value="MTConfigurable" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -366,8 +362,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.Connection" />
         <item itemvalue="Python.Client" />
+        <item itemvalue="Python.Connection" />
         <item itemvalue="Python.Main" />
         <item itemvalue="Python.Server" />
         <item itemvalue="Python.DataMgr" />
@@ -539,28 +535,32 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/SocketServer/Client.py">
+    <entry file="file://D:/Program Files/Python37/Lib/socketserver.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="320">
-          <caret line="16" column="28" selection-start-line="16" selection-start-column="28" selection-end-line="16" selection-end-column="28" />
+        <state relative-caret-position="99">
+          <caret line="716" selection-start-line="716" selection-end-line="716" />
         </state>
       </provider>
     </entry>
-    <entry file="file://D:/Program Files/Python37/Lib/socketserver.py">
+    <entry file="file://$PROJECT_DIR$/SocketServer/Client.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1839">
-          <caret line="463" column="13" selection-start-line="463" selection-start-column="13" selection-end-line="463" selection-end-column="13" />
+        <state relative-caret-position="179">
+          <caret line="31" column="9" lean-forward="true" selection-start-line="31" selection-start-column="9" selection-end-line="31" selection-end-column="9" />
+          <folding>
+            <element signature="e#287#300#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/SocketServer/Connection.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="160">
-          <caret line="38" column="31" lean-forward="true" selection-start-line="38" selection-start-column="31" selection-end-line="38" selection-end-column="31" />
+        <state relative-caret-position="38">
+          <caret line="55" column="18" selection-start-line="55" selection-start-column="18" selection-end-line="55" selection-end-column="18" />
           <folding>
             <element signature="e#369#380#0" expanded="true" />
-            <marker date="1557899533209" expanded="true" signature="1139:1387" ph="..." />
-            <marker date="1557899533209" expanded="true" signature="1422:2300" ph="..." />
+            <element signature="e#1116#1357#0" />
+            <marker date="1557933218907" expanded="true" signature="1120:1368" ph="..." />
+            <marker date="1557933218907" expanded="true" signature="1403:2315" ph="..." />
           </folding>
         </state>
       </provider>

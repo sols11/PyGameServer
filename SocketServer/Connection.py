@@ -18,7 +18,6 @@ from threading import Thread
 
 class Connection(socketserver.BaseRequestHandler):
 	def setup(self):
-		print(self.server)
 		ip = self.client_address[0].strip()  # 获取客户端的ip
 		port = self.client_address[1]  # 获取客户端的port
 		print("[服务器] 客户端", ip + ":" + str(port), "已连接")
@@ -34,7 +33,7 @@ class Connection(socketserver.BaseRequestHandler):
 		print("[服务器] 开始监听客户端消息")
 		while True:
 			data = sock.recv(1024)
-			print("[收到信息]", data.decode())
+			# print("[收到信息]", data.decode())
 			self.processData(data)
 			if data == b"quit":
 				break
@@ -54,22 +53,23 @@ class Connection(socketserver.BaseRequestHandler):
 		"""用来处理消息，粘包分包，事件分发等功能。"""
 		self.dataBuffer += data
 		while True:
+			# 若数据量不足够，则跳出循环接受下一次数据
 			if len(self.dataBuffer) < self.headerSize:
 				print("数据包（%s Byte）小于消息头部长度，跳出小循环" % len(self.dataBuffer))
 				break
 			# 读取header
-			headPack = struct.unpack('!3l', self.dataBuffer[:self.headerSize])
+			headPack = struct.unpack('!3I', self.dataBuffer[:self.headerSize])
 			bodySize = headPack[1]
 			# 分包情况处理，跳出函数继续接收数据
 			if len(self.dataBuffer) < self.headerSize + bodySize:
-				print("数据包（%s Byte）不完整（总共%s Byte），跳出小循环" % (len(dataBuffer), self.headerSize + bodySize))
+				print("数据包（%s Byte）不完整（总共%s Byte），跳出小循环" % (len(self.dataBuffer), self.headerSize + bodySize))
 				break
 			# 读取消息正文的内容
 			body = self.dataBuffer[self.headerSize:self.headerSize + bodySize]
 			# 数据处理
 			self.dataHandle(headPack, body)
-			# 粘包情况处理
-			dataBuffer = self.dataBuffer[self.headerSize + bodySize:]  # 获取下一个数据包，类似于把数据pop出
+			# 粘包情况处理（获取下一个数据包，类似于把数据pop出）
+			self.dataBuffer = self.dataBuffer[self.headerSize + bodySize:]
 
 	def dataHandle(self, headPack, body):
 		self.sn += 1
@@ -89,8 +89,8 @@ IP_ADDRESS = HOST + ":" + str(PORT)
 NWORKERS = 16
 server = socketserver.ThreadingTCPServer((HOST, PORT), Connection)
 print("[服务器]", server.server_address, "启动成功")
-for n in range(NWORKERS):
-	t = Thread(target=server.serve_forever)
-	t.daemon = True
-	t.start()
+# for n in range(NWORKERS):
+# 	t = Thread(target=server.serve_forever)
+# 	t.daemon = True
+# 	t.start()
 server.serve_forever()
