@@ -10,6 +10,7 @@ Description:
 History:
 ----------------------------------------------------------------------------"""
 import json
+import socket
 import socketserver
 import struct
 import time
@@ -17,24 +18,35 @@ from threading import Thread
 
 
 class Connection(socketserver.BaseRequestHandler):
+	clientAddress = []
+	clientSockets = []
+
 	def setup(self):
-		ip = self.client_address[0].strip()  # 获取客户端的ip
-		port = self.client_address[1]  # 获取客户端的port
-		print("[服务器] 客户端", ip + ":" + str(port), "已连接")
 		self.dataBuffer = bytes()
 		self.headerSize = 12
-		self.sn = 0
+		self.packageNo = 0
 		self.heartBeatTime = 30
 		self.lastTickTime = time.time()
+		self.request.settimeout(self.heartBeatTime)  # 对socket设置超时时间
+		# 记录客户端地址
+		print("[服务器] 客户端%s已连接" % str(self.client_address))
+		# 保存到队列中
+		self.clientAddress.append(self.client_address)
+		self.clientSockets.append(self.request)
 
 	def handle(self):
 		sock = self.request
 		sock.send("已连接服务器127.0.0.1:8888".encode())
 		print("[服务器] 开始监听客户端消息")
 		while True:
-			data = sock.recv(1024)
-			# print("[收到信息]", data.decode())
-			self.processData(data)
+			try:
+				data = sock.recv(1024)
+			except socket.timeout:  # 超时会抛出socket.timeout异常
+				print("[心跳检测] 超时，断开连接")
+				break
+			if data:  # 判断是否接收到数据
+				# print("[收到信息]", data.decode())
+				self.processData(data)
 			if data == b"quit":
 				break
 			sock.send("信息已接收".encode())
@@ -42,7 +54,7 @@ class Connection(socketserver.BaseRequestHandler):
 
 	def createHeadPack(self):
 		ver = 1
-		body = json.dumps(dict(hello = "world"))
+		body = json.dumps(dict(hello="world"))
 		print(body)  # {"hello": "world"}
 		cmd = 101
 		header = [ver, len(body), cmd]
@@ -55,14 +67,14 @@ class Connection(socketserver.BaseRequestHandler):
 		while True:
 			# 若数据量不足够，则跳出循环接受下一次数据
 			if len(self.dataBuffer) < self.headerSize:
-				print("数据包（%s Byte）小于消息头部长度，跳出小循环" % len(self.dataBuffer))
+				print("[系统] 数据包（%s Byte）小于消息头部长度，等待下次接受" % len(self.dataBuffer))
 				break
 			# 读取header
 			headPack = struct.unpack('!3I', self.dataBuffer[:self.headerSize])
 			bodySize = headPack[1]
 			# 分包情况处理，跳出函数继续接收数据
 			if len(self.dataBuffer) < self.headerSize + bodySize:
-				print("数据包（%s Byte）不完整（总共%s Byte），跳出小循环" % (len(self.dataBuffer), self.headerSize + bodySize))
+				print("[系统] 数据包（%s Byte）不完整（总共%s Byte），等待下次接受" % (len(self.dataBuffer), self.headerSize + bodySize))
 				break
 			# 读取消息正文的内容
 			body = self.dataBuffer[self.headerSize:self.headerSize + bodySize]
@@ -72,14 +84,16 @@ class Connection(socketserver.BaseRequestHandler):
 			self.dataBuffer = self.dataBuffer[self.headerSize + bodySize:]
 
 	def dataHandle(self, headPack, body):
-		self.sn += 1
-		print("第%s个数据包" % self.sn)
+		self.packageNo += 1
+		print("第%s个数据包" % self.packageNo)
 		print("ver:%s, bodySize:%s, cmd:%s" % headPack)
 		print(body.decode())
 		print()
 
 	def finish(self):
-		pass
+		print("[服务器] 客户端连接已断开！")
+		self.clientAddress.remove(self.client_address)
+		self.clientSockets.remove(self.request)
 
 
 # 创建服务器（限制最大连接数）
@@ -88,7 +102,7 @@ PORT = 8888
 IP_ADDRESS = HOST + ":" + str(PORT)
 NWORKERS = 16
 server = socketserver.ThreadingTCPServer((HOST, PORT), Connection)
-print("[服务器]", server.server_address, "启动成功")
+print("[服务器]%s启动成功" % str(server.server_address))
 # for n in range(NWORKERS):
 # 	t = Thread(target=server.serve_forever)
 # 	t.daemon = True
