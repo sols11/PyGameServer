@@ -46,7 +46,7 @@ def simpleCmd(cmd):
 
 
 # 正常数据包
-client.send(register("Anotts", "86696686"))
+client.send(register("测试用户", "123321"))
 # time.sleep(3)
 # client.send(simpleCmd("Quit"))
 

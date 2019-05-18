@@ -11,7 +11,7 @@ History:
 import json
 import socket
 
-from Core import DataMgr
+from Core import DataMgr, System
 
 
 class HandleBasicMsg:
@@ -52,8 +52,14 @@ class HandleBasicMsg:
 		pw = data["pw"]
 		print("[收到登录协议] 用户名：%s 密码：%s" % (id, pw))
 		if not DataMgr.Instance.CheckPassword(id, pw):
-			conn.send("-1")
+			conn.send(b"-1")
 			return
-
-	def MsgLogout(self):
 		pass
+		conn.send(b"0")
+
+	@classmethod
+	def MsgLogout(cls, conn, jsonStr):
+		body = json.dumps(dict(msg="Logout"))
+		headPack = System.CreateHeadPack(len(body))
+		data = headPack + body.encode()
+		conn.send(data)
