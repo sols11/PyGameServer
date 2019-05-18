@@ -23,9 +23,9 @@ class DataMgr:
 		self.password_ = "86696686"
 		self.database_ = "game"
 		self.db_ = None
-		self.cursor_ = self.Connect()
+		self.cursor_ = self.connect()
 
-	def Connect(self):
+	def connect(self):
 		self.db_ = pymysql.connect("localhost", self.username_, self.password_, self.database_)
 		return self.db_.cursor()
 
@@ -34,13 +34,15 @@ class DataMgr:
 
 	def CanRegister(self, id: str) -> bool:
 		if not self.IsSafeString(id):
+			print("[DataMgr] CanRegister 使用非法字符")
 			return False
 		query = r"SELECT * FROM USER WHERE ID='{}'".format(id)
 		try:
 			self.cursor_.execute(query)
 			return self.cursor_.rowcount == 0
-		except Exception:
-			print("[DataMgr] CanRegister Fail:", Exception)
+		except:
+			print("[DataMgr] 注册查询失败:")
+			return False
 
 	def Register(self, id, pw) -> bool:
 		if not self.IsSafeString(id) or not self.IsSafeString(pw):
@@ -53,23 +55,26 @@ class DataMgr:
 		try:
 			self.cursor_.execute(sql)
 			return True
-		except Exception:
-			print("[DataMgr] Register", Exception)
-			return False
-
-	def CreatePlayer(self, id) -> bool:
-		if not self.IsSafeString(id):
+		except:
+			print("[DataMgr] 注册失败:", Exception)
+			self.db_.rollback()
 			return False
 
 	def CheckPassword(self, id, pw) -> bool:
 		if not self.IsSafeString(id) or not self.IsSafeString(pw):
+			print("[DataMgr] CheckPassword 使用非法字符")
 			return False
 		query = r"SELECT * FROM USER WHERE ID='{0}' AND PW='{1};'".format(id, pw)
 		try:
 			self.cursor_.execute(query)
 			return self.cursor_.rowcount != 0
-		except Exception:
-			print("[DataMgr] CheckPassword ", Exception)
+		except:
+			print("[DataMgr] 密码查询失败")
+			return False
+
+# Player相关操作
+	def CreatePlayer(self, id) -> bool:
+		if not self.IsSafeString(id):
 			return False
 
 	def GetPlayerData(self, id):

@@ -9,7 +9,7 @@ Description:
 History:
 ----------------------------------------------------------------------------"""
 from Core import DataMgr
-from Core import ServNet
+from Core import Connection
 
 if __name__ == "__main__":
 	dataMgr = DataMgr.Instance

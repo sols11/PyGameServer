@@ -52,12 +52,8 @@ class Connection(socketserver.BaseRequestHandler):
 			sock.send("信息已接收".encode())
 		sock.close()
 
-	def createHeadPack(self):
-		ver = 1
-		body = json.dumps(dict(hello="world"))
-		print(body)  # {"hello": "world"}
-		cmd = 101
-		header = [ver, len(body), cmd]
+	def createHeadPack(self, ver: int, size: int, cmd: int):
+		header = [ver, size, cmd]
 		headPack = struct.pack("!3I", *header)
 		print(headPack)  # b'\x00\x00\x00\x01\x00\x00\x00\x12\x00\x00\x00e'
 
