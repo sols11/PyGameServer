@@ -13,7 +13,14 @@ from Core import DataMgr
 
 
 class HandleBasicMsg:
-	def MsgRegsiter(self, conn, jsonStr):
+	@classmethod
+	def MsgQuit(cls):
+		# 协定用ConnectionResetError异常表示断开连接
+		raise ConnectionResetError
+
+
+	@classmethod
+	def MsgRegsiter(cls, conn, jsonStr):
 		"""
 		处理注册信息的事件
 		:param jsonStr:
@@ -30,7 +37,8 @@ class HandleBasicMsg:
 		else:
 			conn.send("-1")
 
-	def MsgLogin(self, conn, jsonStr):
+	@classmethod
+	def MsgLogin(cls, conn, jsonStr):
 		data = json.loads(jsonStr)
 		id = data["id"]
 		pw = data["pw"]

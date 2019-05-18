@@ -16,6 +16,8 @@ import struct
 import time
 from threading import Thread
 
+from Logic.HandleBasicMsg import HandleBasicMsg
+
 
 class Connection(socketserver.BaseRequestHandler):
 	clientAddress = []
@@ -47,9 +49,12 @@ class Connection(socketserver.BaseRequestHandler):
 			except ConnectionResetError:
 				print("[服务器] 远程主机强迫关闭了一个现有的连接")
 				break
-			if data:  # 判断是否接收到数据
-				self.processData(data)
-			# sock.send("信息已接收".encode())
+			try:
+				if data:  # 判断是否接收到数据
+					self.processData(data)
+			except ConnectionResetError:
+				print("[服务器] 收到退出消息，客户端正常退出")
+				break
 		sock.close()
 
 	def processData(self, data: bytes):
@@ -79,8 +84,20 @@ class Connection(socketserver.BaseRequestHandler):
 		self.packageNo += 1
 		print("第%s个数据包" % self.packageNo)
 		data = json.loads(body)
-		print(data)
-		print(data["msg"])
+		msg = data["msg"]
+		methodName = "Msg" + msg
+		# BasicMsg分发
+		if msg == "Register" or msg == "Login" or msg == "Quit":
+			func = getattr(HandleBasicMsg, methodName, None)
+			if not func:
+				print("[警告] HandleMsg没有处理该方法：%s" % methodName)
+				return
+			print("[处理基础消息]", msg)
+			func()
+		# PlayerMsg分发
+		else:
+			print("[处理基础消息]", msg)
+			pass
 
 	def createHeadPack(self, size: int = 0):
 		header = [size]
