@@ -23,7 +23,7 @@ class Connection(socketserver.BaseRequestHandler):
 
 	def setup(self):
 		self.dataBuffer = bytes()
-		self.headerSize = 12
+		self.HEADER_SIZE = 4
 		self.packageNo = 0
 		self.heartBeatTime = 30
 		self.lastTickTime = time.time()
@@ -44,47 +44,49 @@ class Connection(socketserver.BaseRequestHandler):
 			except socket.timeout:  # 超时会抛出socket.timeout异常
 				print("[心跳检测] 超时，断开连接")
 				break
-			if data:  # 判断是否接收到数据
-				# print("[收到信息]", data.decode())
-				self.processData(data)
-			if data == b"quit":
+			except ConnectionResetError:
+				print("[服务器] 远程主机强迫关闭了一个现有的连接")
 				break
-			sock.send("信息已接收".encode())
+			if data:  # 判断是否接收到数据
+				self.processData(data)
+			# sock.send("信息已接收".encode())
 		sock.close()
-
-	def createHeadPack(self, ver: int, size: int, cmd: int):
-		header = [ver, size, cmd]
-		headPack = struct.pack("!3I", *header)
-		print(headPack)  # b'\x00\x00\x00\x01\x00\x00\x00\x12\x00\x00\x00e'
 
 	def processData(self, data: bytes):
 		"""用来处理消息，粘包分包，事件分发等功能。"""
 		self.dataBuffer += data
 		while True:
 			# 若数据量不足够，则跳出循环接受下一次数据
-			if len(self.dataBuffer) < self.headerSize:
+			if len(self.dataBuffer) < self.HEADER_SIZE:
 				print("[系统] 数据包（%s Byte）小于消息头部长度，等待下次接受" % len(self.dataBuffer))
 				break
 			# 读取header
-			headPack = struct.unpack('!3I', self.dataBuffer[:self.headerSize])
-			bodySize = headPack[1]
+			headPack = struct.unpack('!I', self.dataBuffer[:self.HEADER_SIZE])
+			bodySize = headPack[0]
 			# 分包情况处理，跳出函数继续接收数据
-			if len(self.dataBuffer) < self.headerSize + bodySize:
-				print("[系统] 数据包（%s Byte）不完整（总共%s Byte），等待下次接受" % (len(self.dataBuffer), self.headerSize + bodySize))
+			if len(self.dataBuffer) < self.HEADER_SIZE + bodySize:
+				print("[系统] 数据包（%s Byte）不完整（总共%s Byte），等待下次接受" % (len(self.dataBuffer), self.HEADER_SIZE + bodySize))
 				break
 			# 读取消息正文的内容
-			body = self.dataBuffer[self.headerSize:self.headerSize + bodySize]
+			print("[系统] 消息长度：%d" % bodySize)
+			body = self.dataBuffer[self.HEADER_SIZE:self.HEADER_SIZE + bodySize]
 			# 数据处理
-			self.dataHandle(headPack, body)
+			self.dataHandle(body)
 			# 粘包情况处理（获取下一个数据包，类似于把数据pop出）
-			self.dataBuffer = self.dataBuffer[self.headerSize + bodySize:]
+			self.dataBuffer = self.dataBuffer[self.HEADER_SIZE + bodySize:]
 
-	def dataHandle(self, headPack, body):
+	def dataHandle(self, body):
 		self.packageNo += 1
 		print("第%s个数据包" % self.packageNo)
-		print("ver:%s, bodySize:%s, cmd:%s" % headPack)
-		print(body.decode())
-		print()
+		data = json.loads(body)
+		print(data)
+		print(data["msg"])
+
+	def createHeadPack(self, size: int = 0):
+		header = [size]
+		headPack = struct.pack("!I", *header)
+		print(headPack)
+		return headPack
 
 	def finish(self):
 		print("[服务器] 客户端连接已断开！")

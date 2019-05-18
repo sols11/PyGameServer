@@ -32,10 +32,24 @@ def register(idStr, pwStr):
 	return headPack + body.encode()
 
 
+def login(idStr, pwStr):
+	body = json.dumps(dict(msg="Login", id=idStr, pw=pwStr))
+	headPack = createHeadPack(len(body))
+	return headPack + body.encode()
+
+
+def simpleCmd(cmd):
+	body = json.dumps(dict(msg=cmd))
+	print(body)
+	headPack = createHeadPack(len(body))
+	return headPack + body.encode()
+
+
 # 正常数据包
 client.send(register("Anotts", "86696686"))
 time.sleep(3)
-client.send(b"quit")
+client.send(simpleCmd("quit"))
+time.sleep(3)
 
 while False:
 	data = client.recv(1024)
