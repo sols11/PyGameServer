@@ -49,7 +49,7 @@ class DataMgr:
 			print("[DataMgr] Register 使用非法字符")
 			return False
 		if not self.CanRegister(id):
-			print("[DataMgr] Register CanRegister")
+			print("[DataMgr] Register 不可注册")
 			return False
 		sql = r"INSERT INTO USER SET ID = '{0}' , PW = '{1}'".format(id, pw)
 		try:

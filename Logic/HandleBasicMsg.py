@@ -9,33 +9,41 @@ Description:
 History:
 ----------------------------------------------------------------------------"""
 import json
+import socket
+
 from Core import DataMgr
 
 
 class HandleBasicMsg:
 	@classmethod
-	def MsgQuit(cls):
-		# 协定用ConnectionResetError异常表示断开连接
-		raise ConnectionResetError
-
-
-	@classmethod
-	def MsgRegsiter(cls, conn, jsonStr):
+	def MsgQuit(cls, conn: socket, data):
 		"""
-		处理注册信息的事件
-		:param jsonStr:
+		客户端退出连接。协定用ConnectionResetError异常表示断开连接。
+		消息函数都需要传递socket和json两个参数
+		:param data:
+		:param conn:
 		:return:
 		"""
-		data = json.loads(jsonStr)
+		raise ConnectionResetError
+
+	@classmethod
+	def MsgRegister(cls, conn, data):
+		"""
+		处理注册信息的事件
+		:param conn:
+		:param data:
+		:return:
+		"""
 		id = data["id"]
 		pw = data["pw"]
+		# 先不管是否能取到值
 		print("[收到注册协议] 用户名：%s 密码：%s" % (id, pw))
-		# 构建返回协议
+		# 构建返回协议（0为成功）
 		if DataMgr.Instance.Register(id, pw):
-			conn.send("0")
+			conn.send(b"0")
 			DataMgr.Instance.CreatePlayer(id)
 		else:
-			conn.send("-1")
+			conn.send(b"-1")
 
 	@classmethod
 	def MsgLogin(cls, conn, jsonStr):
@@ -49,5 +57,3 @@ class HandleBasicMsg:
 
 	def MsgLogout(self):
 		pass
-
-

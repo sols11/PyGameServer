@@ -46,17 +46,17 @@ def simpleCmd(cmd):
 
 
 # 正常数据包
-# client.send(register("Anotts", "86696686"))
+client.send(register("Anotts", "86696686"))
 # time.sleep(3)
-client.send(simpleCmd("Quit"))
-time.sleep(3)
+# client.send(simpleCmd("Quit"))
 
-while False:
+# 接受消息
+while True:
 	data = client.recv(1024)
 	# 将bytes转为str输出
 	print("[收到信息]", data.decode())
-	msg = input("[发送信息]：")
-	client.send(msg.encode())
-	if msg == "quit":
-		break
+	# msg = input("[发送信息]：")
+	# client.send(simpleCmd(msg))
+	# if msg == "Quit":
+	# 	break
 client.close()

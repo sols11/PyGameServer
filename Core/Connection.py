@@ -81,6 +81,11 @@ class Connection(socketserver.BaseRequestHandler):
 			self.dataBuffer = self.dataBuffer[self.HEADER_SIZE + bodySize:]
 
 	def dataHandle(self, body):
+		"""
+		处理接受到的消息，如将json字符串反序列化，消息分发，反射调用事件
+		:param body:
+		:return:
+		"""
 		self.packageNo += 1
 		print("第%s个数据包" % self.packageNo)
 		data = json.loads(body)
@@ -93,7 +98,7 @@ class Connection(socketserver.BaseRequestHandler):
 				print("[警告] HandleMsg没有处理该方法：%s" % methodName)
 				return
 			print("[处理基础消息]", msg)
-			func()
+			func(self.request, data)
 		# PlayerMsg分发
 		else:
 			print("[处理基础消息]", msg)
