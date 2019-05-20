@@ -16,6 +16,11 @@ from Core import DataMgr, System
 
 class HandleBasicMsg:
 	@classmethod
+	def MsgHeartBeat(cls, conn, data):
+		# 让client每隔一定时间发一个name为HeartBeat的消息，即为心跳
+		print("[更新心跳时间]")
+
+	@classmethod
 	def MsgQuit(cls, conn: socket, data):
 		"""
 		客户端退出连接。协定用ConnectionResetError异常表示断开连接。
@@ -46,8 +51,7 @@ class HandleBasicMsg:
 			conn.send(b"-1")
 
 	@classmethod
-	def MsgLogin(cls, conn, jsonStr):
-		data = json.loads(jsonStr)
+	def MsgLogin(cls, conn, data):
 		id = data["id"]
 		pw = data["pw"]
 		print("[收到登录协议] 用户名：%s 密码：%s" % (id, pw))
@@ -58,6 +62,6 @@ class HandleBasicMsg:
 		conn.send(b"0")
 
 	@classmethod
-	def MsgLogout(cls, conn, jsonStr):
-		data = System.CreatePackage("Logout")
-		conn.send(data)
+	def MsgLogout(cls, conn, data):
+		sendData = System.CreatePackage("Logout")
+		conn.send(sendData)

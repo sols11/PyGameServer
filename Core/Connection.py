@@ -16,6 +16,7 @@ import struct
 import time
 from threading import Thread
 
+from Core import System
 from Logic.HandleBasicMsg import HandleBasicMsg
 
 
@@ -25,7 +26,7 @@ class Connection(socketserver.BaseRequestHandler):
 
 	def setup(self):
 		self.dataBuffer = bytes()
-		self.HEADER_SIZE = 4
+		self.HEADER_SIZE = System.INT_SIZE
 		self.packageNo = 0
 		self.heartBeatTime = 30
 		self.lastTickTime = time.time()
@@ -89,32 +90,32 @@ class Connection(socketserver.BaseRequestHandler):
 		"""
 		self.packageNo += 1
 		print("第%s个数据包" % self.packageNo)
-		data = json.loads(body)
-		msg = data["msg"]
-		methodName = "Msg" + msg
+		name, start = System.GetString(body, 0)
+		data = json.loads(body[start:])
+		methodName = "Msg" + name
 		# BasicMsg分发
-		if msg == "Register" or msg == "Login" or msg == "Quit":
+		if name == "Register" or name == "Login" or name == "Quit":
 			func = getattr(HandleBasicMsg, methodName, None)
 			if not func:
 				print("[警告] HandleMsg没有处理该方法：%s" % methodName)
 				return
-			print("[处理基础消息]", msg)
+			print("[处理基础消息]", name)
 			func(self.request, data)
 		# PlayerMsg分发
 		else:
-			print("[处理基础消息]", msg)
+			print("[处理玩家消息]", name)
 			pass
-
-	def createHeadPack(self, size: int = 0):
-		header = [size]
-		headPack = struct.pack("!I", *header)
-		print(headPack)
-		return headPack
 
 	def finish(self):
 		print("[服务器] 客户端连接已断开！")
 		self.clientAddress.remove(self.client_address)
 		self.clientSockets.remove(self.request)
+
+	def Print(self):
+		# 打印信息
+		print("")
+		print("===服务器登录信息===")
+		print(self.clientAddress)
 
 
 # 创建服务器（限制最大连接数）

@@ -43,7 +43,8 @@ client.send(register("Anotts", "86696686"))
 while True:
 	data = client.recv(1024)
 	# 将bytes转为str输出
-	print("[收到信息]", data.decode())
+	if data:
+		print("[收到信息]", data.decode())
 	# msg = input("[发送信息]：")
 	# client.send(simpleCmd(msg))
 	# if msg == "Quit":

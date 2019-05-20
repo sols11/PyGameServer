@@ -3,13 +3,15 @@
 Author:
    caodahan97@126.com
 Date:
-   2019/04/24
+   2019/0INT_SIZE/2INT_SIZE
 Description:
 	协定int为4个字节，即使用Int32。使用大端传输
 	提供辅助方法。如消息打包，字节流操作，类型转换……
 History:
 ----------------------------------------------------------------------------"""
 import struct
+
+INT_SIZE = 4
 
 
 def CreatePackage(name: str, body: str or bytes = b""):
@@ -20,16 +22,16 @@ def CreatePackage(name: str, body: str or bytes = b""):
 	:param body:
 	:return:
 	"""
-	body = len(name).to_bytes(4, "big") + name.encode() + ToBytes(body)
+	body = len(name).to_bytes(INT_SIZE, "big") + name.encode() + ToBytes(body)
 	size = len(body)
-	headPack = size.to_bytes(4, "big")  # 用to_bytes代替struct打包
+	headPack = size.to_bytes(INT_SIZE, "big")  # 用to_bytes代替struct打包
 	# header = [size]
 	# headPack = struct.pack("!I", *header)
 	return headPack + body
 
 
 def AddInt(body: bytes, num: int):
-	return body + num.to_bytes(4, "big")
+	return body + num.to_bytes(INT_SIZE, "big")
 
 
 def GetInt(body: bytes, start: int) -> tuple:
@@ -39,15 +41,16 @@ def GetInt(body: bytes, start: int) -> tuple:
 	:param start:
 	:return: tuple
 	"""
-	end = start + 4
+	end = start + INT_SIZE
 	if len(body) < end:
 		raise ValueError("获取int数据失败")
-	return int.from_bytes(bytes[start:end], "big"), end
+	num = int.from_bytes(body[start:end], "big")
+	return num, end
 
 
 def AddString(body: bytes, string: str):
 	size = len(string)
-	body += size.to_bytes(4, "big") + string.encode()
+	body += size.to_bytes(INT_SIZE, "big") + string.encode()
 	return body
 
 
@@ -66,7 +69,7 @@ def GetString(body: bytes, start: int) -> tuple:
 		end = start + size  # 还需要计算出string的end索引
 		if len(body) < end:
 			raise BufferError("获取string内容数据失败")
-		return str(body[start:end]), end
+		return body[start:end].decode(), end
 
 
 def ToStr(bytesOrStr):
