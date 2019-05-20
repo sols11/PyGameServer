@@ -59,7 +59,5 @@ class HandleBasicMsg:
 
 	@classmethod
 	def MsgLogout(cls, conn, jsonStr):
-		body = json.dumps(dict(msg="Logout"))
-		headPack = System.CreateHeadPack(len(body))
-		data = headPack + body.encode()
+		data = System.CreatePackage("Logout")
 		conn.send(data)

@@ -45,6 +45,7 @@ class Connection(socketserver.BaseRequestHandler):
 				data = sock.recv(1024)
 			except socket.timeout:  # 超时会抛出socket.timeout异常
 				print("[心跳检测] 超时，断开连接")
+				sock.send("Quit")  # 这部分还没做完，还没主动发心跳包和退出消息
 				break
 			except ConnectionResetError:
 				print("[服务器] 远程主机强迫关闭了一个现有的连接")
@@ -66,8 +67,8 @@ class Connection(socketserver.BaseRequestHandler):
 				print("[系统] 数据包（%s Byte）小于消息头部长度，等待下次接受" % len(self.dataBuffer))
 				break
 			# 读取header
-			headPack = struct.unpack('!I', self.dataBuffer[:self.HEADER_SIZE])
-			bodySize = headPack[0]
+			# headPack = struct.unpack('!I', self.dataBuffer[:self.HEADER_SIZE])
+			bodySize = int.from_bytes(self.dataBuffer[:self.HEADER_SIZE], "big")
 			# 分包情况处理，跳出函数继续接收数据
 			if len(self.dataBuffer) < self.HEADER_SIZE + bodySize:
 				print("[系统] 数据包（%s Byte）不完整（总共%s Byte），等待下次接受" % (len(self.dataBuffer), self.HEADER_SIZE + bodySize))
