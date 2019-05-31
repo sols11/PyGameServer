@@ -17,6 +17,7 @@ import time
 from threading import Thread
 
 from Core import System
+from Logic.HandlePlayerMsg import HandlePlayerMsg
 from Logic.HandleBasicMsg import HandleBasicMsg
 
 
@@ -27,8 +28,7 @@ class Connection(socketserver.BaseRequestHandler):
 	def setup(self):
 		self.dataBuffer = bytes()
 		self.HEADER_SIZE = System.INT_SIZE
-		self.packageNo = 0
-		self.heartBeatTime = 30
+		self.heartBeatTime = 120
 		self.lastTickTime = time.time()
 		self.request.settimeout(self.heartBeatTime)  # 对socket设置超时时间
 		# 记录客户端地址
@@ -39,14 +39,14 @@ class Connection(socketserver.BaseRequestHandler):
 
 	def handle(self):
 		sock = self.request
-		sock.send("已连接服务器127.0.0.1:8888".encode())
+		# sock.send("已连接服务器127.0.0.1:8888".encode())
 		print("[服务器] 开始监听客户端消息")
 		while True:
 			try:
 				data = sock.recv(1024)
 			except socket.timeout:  # 超时会抛出socket.timeout异常
 				print("[心跳检测] 超时，断开连接")
-				sock.send("Quit")  # 这部分还没做完，还没主动发心跳包和退出消息
+				sock.send(System.CreatePackage("Disconnect"))
 				break
 			except ConnectionResetError:
 				print("[服务器] 远程主机强迫关闭了一个现有的连接")
@@ -88,23 +88,25 @@ class Connection(socketserver.BaseRequestHandler):
 		:param body:
 		:return:
 		"""
-		self.packageNo += 1
-		print("第%s个数据包" % self.packageNo)
 		name, start = System.GetString(body, 0)
-		data = json.loads(body[start:])
+		bodyStr = body[start:]
 		methodName = "Msg" + name
 		# BasicMsg分发
-		if name == "Register" or name == "Login" or name == "Quit":
+		if name == "Register" or name == "Login" or name == "Disconnect" or name == "HeartBeat":
 			func = getattr(HandleBasicMsg, methodName, None)
 			if not func:
 				print("[警告] HandleMsg没有处理该方法：%s" % methodName)
 				return
 			print("[处理基础消息]", name)
-			func(self.request, data)
+			func(self.request, bodyStr)
 		# PlayerMsg分发
 		else:
+			func = getattr(HandlePlayerMsg, methodName, None)
+			if not func:
+				print("[警告] HandleMsg没有处理该方法：%s" % methodName)
+				return
 			print("[处理玩家消息]", name)
-			pass
+			func(self.request, bodyStr)
 
 	def finish(self):
 		print("[服务器] 客户端连接已断开！")

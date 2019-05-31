@@ -54,11 +54,12 @@ class DataMgr:
 		sql = r"INSERT INTO USER SET ID = '{0}' , PW = '{1}'".format(id, pw)
 		try:
 			self.cursor_.execute(sql)
-			return True
 		except:
-			print("[DataMgr] 注册失败:", Exception)
+			print("[DataMgr] 注册失败:")
 			self.db_.rollback()
 			return False
+		self.CreatePlayer(id)
+		return True
 
 	def CheckPassword(self, id, pw) -> bool:
 		if not self.IsSafeString(id) or not self.IsSafeString(pw):
@@ -73,16 +74,37 @@ class DataMgr:
 			return False
 
 # Player相关操作
-	def CreatePlayer(self, id) -> bool:
-		if not self.IsSafeString(id):
+	def CreatePlayer(self, id):
+		sql = r"INSERT INTO `game`.`player` (`id`) VALUES ('{0}');".format(id)
+		try:
+			self.cursor_.execute(sql)
+			return True
+		except:
+			print("[DataMgr] 创建角色失败:")
+			self.db_.rollback()
 			return False
 
-	def GetPlayerData(self, id):
+	def LoadPlayer(self, id):
 		if not self.IsSafeString(id):
 			return None
+		query = r"SELECT * FROM PLAYER WHERE ID='{}'".format(id)
+		try:
+			self.cursor_.execute(query)
+			return self.cursor_.rowcount == 0
+		except:
+			print("[DataMgr] 读档失败:")
+			return False
 
-	def SavePlayer(self, player):
-		pass
+	def SavePlayer(self, id, xmlStr):
+		sql = r"UPDATE `game`.`player` SET `data` = '{0}'  WHERE (`id` = '{1}')".format(xmlStr, id)
+		try:
+			self.cursor_.execute(sql)
+			return True
+		except:
+			print("[DataMgr] 保存失败")
+			self.db_.rollback()
+			raise
+			return False
 
 
 Instance = DataMgr()

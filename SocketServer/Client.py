@@ -14,9 +14,6 @@ import struct
 import json
 from Core import System
 
-client = socket.socket()
-client.connect(("127.0.0.1", 8888))
-
 
 # 注册数据包（第一个参数为消息名）
 def register(idStr, pwStr):
@@ -33,6 +30,8 @@ def simpleCmd(cmd: str):
 	return System.CreatePackage(cmd)
 
 
+client = socket.socket()
+client.connect(("127.0.0.1", 8888))
 # 正常数据包
 client.send(register("Anotts", "86696686"))
 # client.send(register("测试用户", "123321"))
@@ -45,8 +44,8 @@ while True:
 	# 将bytes转为str输出
 	if data:
 		print("[收到信息]", data.decode())
-	# msg = input("[发送信息]：")
-	# client.send(simpleCmd(msg))
-	# if msg == "Quit":
-	# 	break
+# msg = input("[发送信息]：")
+# client.send(simpleCmd(msg))
+# if msg == "Quit":
+# 	break
 client.close()

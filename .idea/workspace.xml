@@ -2,7 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="97fccf15-8210-43c6-a08d-f34847848d18" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/Logic/HandlePlayerMsg.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Sockets/FileClient.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Sockets/FileServer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Core/Connection.py" beforeDir="false" afterPath="$PROJECT_DIR$/Core/Connection.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Core/DataMgr.py" beforeDir="false" afterPath="$PROJECT_DIR$/Core/DataMgr.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Core/System.py" beforeDir="false" afterPath="$PROJECT_DIR$/Core/System.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Logic/HandleBasicMsg.py" beforeDir="false" afterPath="$PROJECT_DIR$/Logic/HandleBasicMsg.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SocketServer/Client.py" beforeDir="false" afterPath="$PROJECT_DIR$/SocketServer/Client.py" afterDir="false" />
@@ -20,7 +25,7 @@
     <SUITE FILE_PATH="coverage/UntiyServer$Socket_Client.coverage" NAME="Socket_Client Coverage Results" MODIFIED="1554876723297" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Sockets" />
     <SUITE FILE_PATH="coverage/UntiyServer$Server.coverage" NAME="Server Coverage Results" MODIFIED="1557643515102" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SocketServer" />
     <SUITE FILE_PATH="coverage/UntiyServer$Main.coverage" NAME="Main Coverage Results" MODIFIED="1557662685078" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Core" />
-    <SUITE FILE_PATH="coverage/PyGameServer$Connection.coverage" NAME="Connection Coverage Results" MODIFIED="1558335645173" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SocketServer" />
+    <SUITE FILE_PATH="coverage/PyGameServer$Connection.coverage" NAME="Connection Coverage Results" MODIFIED="1559121753819" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SocketServer" />
     <SUITE FILE_PATH="coverage/UntiyServer$Socket_Server.coverage" NAME="Socket_Server Coverage Results" MODIFIED="1555125351678" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Sockets" />
     <SUITE FILE_PATH="coverage/PyGameServer$Connection__1_.coverage" NAME="Connection (1) Coverage Results" MODIFIED="1558104043392" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Core" />
     <SUITE FILE_PATH="coverage/PyGameServer$Client.coverage" NAME="Client Coverage Results" MODIFIED="1558335647796" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SocketServer" />
@@ -75,37 +80,42 @@
     <session id="-1071810452">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="6" />
+          <entry key="project.closed" value="15" />
           <entry key="project.open.time.1" value="1" />
           <entry key="project.open.time.11" value="1" />
           <entry key="project.open.time.13" value="1" />
-          <entry key="project.open.time.14" value="1" />
+          <entry key="project.open.time.14" value="3" />
+          <entry key="project.open.time.15" value="3" />
           <entry key="project.open.time.16" value="1" />
+          <entry key="project.open.time.18" value="1" />
           <entry key="project.open.time.19" value="1" />
-          <entry key="project.open.time.22" value="1" />
-          <entry key="project.opened" value="7" />
+          <entry key="project.open.time.20" value="1" />
+          <entry key="project.open.time.22" value="2" />
+          <entry key="project.open.time.30" value="1" />
+          <entry key="project.opened" value="16" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="py" value="24" />
+          <entry key="py" value="33" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="Python" value="24" />
+          <entry key="Python" value="33" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="dummy" value="23" />
-          <entry key="py" value="5321" />
+          <entry key="Python Console" value="38" />
+          <entry key="dummy" value="37" />
+          <entry key="py" value="6671" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="PLAIN_TEXT" value="23" />
-          <entry key="Python" value="5321" />
+          <entry key="PLAIN_TEXT" value="37" />
+          <entry key="Python" value="6709" />
         </counts>
       </usages-collector>
     </session>
@@ -115,50 +125,65 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Core/Connection.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="101">
-              <caret line="31" column="24" selection-start-line="31" selection-start-column="24" selection-end-line="31" selection-end-column="24" />
+            <state relative-caret-position="-376">
+              <caret line="98" column="22" selection-start-line="98" selection-start-column="22" selection-end-line="98" selection-end-column="22" />
               <folding>
                 <element signature="e#24#368#1" />
-                <element signature="e#1053#1560#0" />
-                <element signature="e#1162#1545#0" />
-                <element signature="e#1249#1329#0" />
-                <element signature="e#1366#1407#0" />
-                <element signature="e#1420#1469#0" />
-                <element signature="e#1506#1545#0" />
-                <element signature="e#1601#2432#0" />
-                <element signature="e#1671#2432#0" />
-                <element signature="e#1745#1819#0" />
-                <element signature="e#1823#1833#0" />
-                <element signature="e#2063#2174#0" />
-                <element signature="e#2465#3020#0" />
-                <element signature="e#2465#2537#1" />
-                <element signature="e#2780#2961#0" />
-                <element signature="e#2849#2906#0" />
-                <element signature="e#2989#3020#0" />
-                <element signature="e#3043#3158#0" />
-                <element signature="e#3376#3403#0" />
-                <marker date="1558336080354" expanded="true" signature="3177:3180" ph="..." />
+                <element signature="e#369#380#0" expanded="true" />
+                <marker date="1558583343828" expanded="true" signature="3331:3334" ph="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Logic/HandleBasicMsg.py">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Core/DataMgr.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="118">
-              <caret line="19" column="48" selection-start-line="19" selection-start-column="48" selection-end-line="19" selection-end-column="48" />
+            <state relative-caret-position="1520">
+              <caret line="110" selection-start-line="110" selection-end-line="110" />
               <folding>
                 <element signature="e#24#256#1" />
-                <element signature="e#396#545#0" />
-                <element signature="e#396#516#1" />
-                <element signature="e#598#895#0" />
-                <element signature="e#598#660#1" />
-                <element signature="e#815#867#0" />
-                <element signature="e#1016#1197#0" />
-                <element signature="e#1107#1133#0" />
-                <element signature="e#1248#1306#0" />
-                <marker date="1558336451659" expanded="true" signature="433:456" ph="..." />
+                <element signature="e#300#332#1" />
+                <element signature="e#357#486#0" />
+                <element signature="e#510#624#0" />
+                <element signature="e#661#734#0" />
+                <element signature="e#779#1053#0" />
+                <element signature="e#812#865#0" />
+                <element signature="e#933#997#0" />
+                <element signature="e#1011#1053#0" />
+                <element signature="e#1156#1206#0" />
+                <element signature="e#1241#1289#0" />
+                <marker date="1559123666942" expanded="true" signature="1923:2129" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Sockets/FileServer.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="298">
+              <caret line="90" column="52" selection-start-line="90" selection-start-column="35" selection-end-line="90" selection-end-column="52" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Sockets/FileClient.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-80">
+              <caret line="75" column="28" lean-forward="true" selection-start-line="75" selection-start-column="28" selection-end-line="75" selection-end-column="28" />
+              <folding>
+                <element signature="e#24#476#1" />
+                <element signature="e#375#408#0" />
+                <element signature="e#511#615#0" />
+                <element signature="e#517#575#0" />
+                <element signature="e#682#1078#0" />
+                <element signature="e#706#1078#0" />
+                <element signature="e#966#1032#0" />
+                <element signature="e#1411#1584#0" />
+                <element signature="e#2346#2466#0" />
+                <element signature="e#2956#3077#0" />
               </folding>
             </state>
           </provider>
@@ -167,38 +192,37 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/SocketServer/Client.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="199">
-              <caret line="45" column="12" lean-forward="true" selection-start-line="45" selection-start-column="12" selection-end-line="45" selection-end-column="12" />
+            <state relative-caret-position="-400">
+              <caret line="7" column="33" selection-start-line="7" selection-start-column="33" selection-end-line="7" selection-end-column="33" />
               <folding>
                 <element signature="e#287#300#0" expanded="true" />
-                <marker date="1558328480855" expanded="true" signature="592:745" ph="..." />
-                <marker date="1558328480855" expanded="true" signature="708:745" ph="..." />
+                <marker date="1558351751226" expanded="true" signature="530:744" ph="..." />
+                <marker date="1558351751226" expanded="true" signature="646:744" ph="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Core/System.py">
+        <entry file="file://$PROJECT_DIR$/Logic/HandlePlayerMsg.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="520">
-              <caret line="98" selection-start-line="98" selection-end-line="98" />
+            <state relative-caret-position="338">
+              <caret line="29" column="43" selection-start-line="29" selection-start-column="43" selection-end-line="29" selection-end-column="43" />
               <folding>
-                <element signature="e#24#324#1" />
-                <element signature="e#412#792#0" />
-                <element signature="e#412#548#1" />
-                <element signature="e#710#727#0" />
-                <element signature="e#831#874#0" />
-                <element signature="e#924#1148#0" />
-                <element signature="e#924#1008#1" />
-                <element signature="e#1193#1282#0" />
-                <element signature="e#1335#1675#0" />
-                <element signature="e#1335#1422#1" />
-                <element signature="e#1535#1675#0" />
-                <element signature="e#1702#1885#0" />
-                <element signature="e#1702#1752#1" />
-                <element signature="e#1914#2099#0" />
-                <element signature="e#1914#1966#1" />
+                <element signature="e#24#256#1" />
+                <element signature="e#257#268#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Logic/HandleBasicMsg.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="438">
+              <caret line="73" column="12" selection-start-line="73" selection-start-column="12" selection-end-line="73" selection-end-column="12" />
+              <folding>
+                <element signature="e#778#840#1" />
               </folding>
             </state>
           </provider>
@@ -217,6 +241,7 @@
     <findStrings>
       <find>discon</find>
       <find>4</find>
+      <find>send</find>
     </findStrings>
     <replaceStrings>
       <replace>INT_SIZE</replace>
@@ -243,12 +268,15 @@
         <option value="$PROJECT_DIR$/SocketServer/Connection.py" />
         <option value="$PROJECT_DIR$/Core/Main.py" />
         <option value="$PROJECT_DIR$/Logic/HandleBasicMgs.py" />
-        <option value="$PROJECT_DIR$/Core/DataMgr.py" />
         <option value="$PROJECT_DIR$/Core/ProtocolStr.py" />
         <option value="$PROJECT_DIR$/SocketServer/Client.py" />
-        <option value="$PROJECT_DIR$/Core/System.py" />
         <option value="$PROJECT_DIR$/Core/Connection.py" />
+        <option value="$PROJECT_DIR$/Core/System.py" />
         <option value="$PROJECT_DIR$/Logic/HandleBasicMsg.py" />
+        <option value="$PROJECT_DIR$/Logic/HandlePlayerMsg.py" />
+        <option value="$PROJECT_DIR$/Core/DataMgr.py" />
+        <option value="$PROJECT_DIR$/Sockets/FileServer.py" />
+        <option value="$PROJECT_DIR$/Sockets/FileClient.py" />
       </list>
     </option>
   </component>
@@ -307,7 +335,7 @@
             <path>
               <item name="PyGameServer" type="b2602c69:ProjectViewProjectNode" />
               <item name="PyGameServer" type="462c0819:PsiDirectoryNode" />
-              <item name="SocketServer" type="462c0819:PsiDirectoryNode" />
+              <item name="Sockets" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -339,7 +367,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.Client">
+  <component name="RunManager" selected="Python.Connection">
     <configuration name="Client" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="UntiyServer" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -354,28 +382,6 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/SocketServer/Client.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="Connection (1)" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="UntiyServer" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Core" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Core/Connection.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -455,13 +461,11 @@
       <item itemvalue="Python.Client" />
       <item itemvalue="Python.Main" />
       <item itemvalue="Python.Connection" />
-      <item itemvalue="Python.Connection (1)" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.Client" />
         <item itemvalue="Python.Connection" />
-        <item itemvalue="Python.Connection (1)" />
+        <item itemvalue="Python.Client" />
         <item itemvalue="Python.Main" />
         <item itemvalue="Python.Server" />
       </list>
@@ -480,12 +484,21 @@
     </task>
     <servers />
   </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1295" height="695" extended-state="6" />
+    <frame x="-7" y="-7" width="1295" height="695" extended-state="7" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.22554567" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4972826" visible="true" weight="0.21827" />
+      <window_info id="Structure" order="1" sideWeight="0.5027174" side_tool="true" weight="0.2287793" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32846716" />
@@ -493,13 +506,13 @@
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39963505" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.32846716" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
-      <window_info anchor="bottom" id="Terminal" order="11" />
-      <window_info anchor="bottom" id="Python Console" order="12" />
+      <window_info anchor="bottom" id="Terminal" order="11" weight="0.32846716" />
+      <window_info anchor="bottom" id="Python Console" order="12" weight="0.32846716" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -587,37 +600,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://D:/Program Files/Python37/Lib/socketserver.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="166">
-          <caret line="650" selection-start-line="650" selection-end-line="650" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Core/ProtocolStr.py" />
     <entry file="file://$PROJECT_DIR$/Core/ProtocolBytes.py" />
     <entry file="file://$PROJECT_DIR$/Core/Main.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="182">
           <caret line="15" column="30" lean-forward="true" selection-start-line="15" selection-start-column="30" selection-end-line="15" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Core/DataMgr.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="27" column="22" selection-start-line="27" selection-start-column="22" selection-end-line="27" selection-end-column="22" />
-          <folding>
-            <element signature="e#24#256#1" />
-            <element signature="e#300#332#1" />
-            <element signature="e#357#486#0" />
-            <element signature="e#661#734#0" />
-            <element signature="e#779#1053#0" />
-            <element signature="e#812#865#0" />
-            <element signature="e#933#997#0" />
-            <element signature="e#1011#1053#0" />
-            <element signature="e#1156#1206#0" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -628,86 +616,115 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/SocketServer/Client.py">
+    <entry file="file://D:/Program Files/Python37/Lib/json/decoder.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="199">
-          <caret line="45" column="12" lean-forward="true" selection-start-line="45" selection-start-column="12" selection-end-line="45" selection-end-column="12" />
-          <folding>
-            <element signature="e#287#300#0" expanded="true" />
-            <marker date="1558328480855" expanded="true" signature="592:745" ph="..." />
-            <marker date="1558328480855" expanded="true" signature="708:745" ph="..." />
-          </folding>
+        <state relative-caret-position="162">
+          <caret line="354" selection-start-line="354" selection-end-line="354" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/Program Files/Python37/Lib/socketserver.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="166">
+          <caret line="646" selection-start-line="646" selection-end-line="646" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Core/System.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="520">
-          <caret line="98" selection-start-line="98" selection-end-line="98" />
+        <state relative-caret-position="500">
+          <caret line="34" column="4" selection-start-line="34" selection-start-column="4" selection-end-line="34" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Core/DataMgr.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1520">
+          <caret line="110" selection-start-line="110" selection-end-line="110" />
           <folding>
-            <element signature="e#24#324#1" />
-            <element signature="e#412#792#0" />
-            <element signature="e#412#548#1" />
-            <element signature="e#710#727#0" />
-            <element signature="e#831#874#0" />
-            <element signature="e#924#1148#0" />
-            <element signature="e#924#1008#1" />
-            <element signature="e#1193#1282#0" />
-            <element signature="e#1335#1675#0" />
-            <element signature="e#1335#1422#1" />
-            <element signature="e#1535#1675#0" />
-            <element signature="e#1702#1885#0" />
-            <element signature="e#1702#1752#1" />
-            <element signature="e#1914#2099#0" />
-            <element signature="e#1914#1966#1" />
+            <element signature="e#24#256#1" />
+            <element signature="e#300#332#1" />
+            <element signature="e#357#486#0" />
+            <element signature="e#510#624#0" />
+            <element signature="e#661#734#0" />
+            <element signature="e#779#1053#0" />
+            <element signature="e#812#865#0" />
+            <element signature="e#933#997#0" />
+            <element signature="e#1011#1053#0" />
+            <element signature="e#1156#1206#0" />
+            <element signature="e#1241#1289#0" />
+            <marker date="1559123666942" expanded="true" signature="1923:2129" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Core/Connection.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="101">
-          <caret line="31" column="24" selection-start-line="31" selection-start-column="24" selection-end-line="31" selection-end-column="24" />
+        <state relative-caret-position="-376">
+          <caret line="98" column="22" selection-start-line="98" selection-start-column="22" selection-end-line="98" selection-end-column="22" />
           <folding>
             <element signature="e#24#368#1" />
-            <element signature="e#1053#1560#0" />
-            <element signature="e#1162#1545#0" />
-            <element signature="e#1249#1329#0" />
-            <element signature="e#1366#1407#0" />
-            <element signature="e#1420#1469#0" />
-            <element signature="e#1506#1545#0" />
-            <element signature="e#1601#2432#0" />
-            <element signature="e#1671#2432#0" />
-            <element signature="e#1745#1819#0" />
-            <element signature="e#1823#1833#0" />
-            <element signature="e#2063#2174#0" />
-            <element signature="e#2465#3020#0" />
-            <element signature="e#2465#2537#1" />
-            <element signature="e#2780#2961#0" />
-            <element signature="e#2849#2906#0" />
-            <element signature="e#2989#3020#0" />
-            <element signature="e#3043#3158#0" />
-            <element signature="e#3376#3403#0" />
-            <marker date="1558336080354" expanded="true" signature="3177:3180" ph="..." />
+            <element signature="e#369#380#0" expanded="true" />
+            <marker date="1558583343828" expanded="true" signature="3331:3334" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Logic/HandlePlayerMsg.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="338">
+          <caret line="29" column="43" selection-start-line="29" selection-start-column="43" selection-end-line="29" selection-end-column="43" />
+          <folding>
+            <element signature="e#24#256#1" />
+            <element signature="e#257#268#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Logic/HandleBasicMsg.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="118">
-          <caret line="19" column="48" selection-start-line="19" selection-start-column="48" selection-end-line="19" selection-end-column="48" />
+        <state relative-caret-position="438">
+          <caret line="73" column="12" selection-start-line="73" selection-start-column="12" selection-end-line="73" selection-end-column="12" />
           <folding>
-            <element signature="e#24#256#1" />
-            <element signature="e#396#545#0" />
-            <element signature="e#396#516#1" />
-            <element signature="e#598#895#0" />
-            <element signature="e#598#660#1" />
-            <element signature="e#815#867#0" />
-            <element signature="e#1016#1197#0" />
-            <element signature="e#1107#1133#0" />
-            <element signature="e#1248#1306#0" />
-            <marker date="1558336451659" expanded="true" signature="433:456" ph="..." />
+            <element signature="e#778#840#1" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Sockets/FileServer.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="298">
+          <caret line="90" column="52" selection-start-line="90" selection-start-column="35" selection-end-line="90" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SocketServer/Client.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-400">
+          <caret line="7" column="33" selection-start-line="7" selection-start-column="33" selection-end-line="7" selection-end-column="33" />
+          <folding>
+            <element signature="e#287#300#0" expanded="true" />
+            <marker date="1558351751226" expanded="true" signature="530:744" ph="..." />
+            <marker date="1558351751226" expanded="true" signature="646:744" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Sockets/FileClient.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-80">
+          <caret line="75" column="28" lean-forward="true" selection-start-line="75" selection-start-column="28" selection-end-line="75" selection-end-column="28" />
+          <folding>
+            <element signature="e#24#476#1" />
+            <element signature="e#375#408#0" />
+            <element signature="e#511#615#0" />
+            <element signature="e#517#575#0" />
+            <element signature="e#682#1078#0" />
+            <element signature="e#706#1078#0" />
+            <element signature="e#966#1032#0" />
+            <element signature="e#1411#1584#0" />
+            <element signature="e#2346#2466#0" />
+            <element signature="e#2956#3077#0" />
           </folding>
         </state>
       </provider>

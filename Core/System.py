@@ -10,6 +10,7 @@ Description:
 History:
 ----------------------------------------------------------------------------"""
 import struct
+import json
 
 INT_SIZE = 4
 
@@ -27,7 +28,20 @@ def CreatePackage(name: str, body: str or bytes = b""):
 	headPack = size.to_bytes(INT_SIZE, "big")  # 用to_bytes代替struct打包
 	# header = [size]
 	# headPack = struct.pack("!I", *header)
-	return headPack + body
+	headPack = headPack + body
+	return headPack
+
+
+def JsonToData(jsonStr):
+	try:
+		if jsonStr:
+			data = json.loads(jsonStr)
+		else:
+			data = None
+	except json.decoder.JSONDecodeError:
+		print("[系统] JSON数据解析错误")
+		data = None
+	return data
 
 
 def AddInt(body: bytes, num: int):
