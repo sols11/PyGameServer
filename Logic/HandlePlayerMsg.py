@@ -9,9 +9,7 @@ Description:
 History:
 ----------------------------------------------------------------------------"""
 import json
-import socket
-
-from Core import DataMgr, System
+from Core import DataMgr, System, Navigation
 
 
 class HandlePlayerMsg:
@@ -28,3 +26,14 @@ class HandlePlayerMsg:
 	@classmethod
 	def MsgSave(cls, conn, bodyStr):
 		DataMgr.Instance.SavePlayer("Anotts", bodyStr)
+
+	@classmethod
+	def MsgNavigate(cls, conn, bodyStr):
+		posList = System.JsonToData(bodyStr)
+		if posList is None:
+			print("[系统] Data数据为空")
+			return
+		pathList = Navigation.Navigate(posList[0], posList[1])
+		# print(pathList)
+		jsonStr = json.dumps(pathList)
+		conn.send(System.CreatePackage("Navigate", System.ToBytes(jsonStr)))

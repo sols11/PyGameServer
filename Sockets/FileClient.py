@@ -5,7 +5,8 @@ Author:
 Date:
    2019/05/29
 Description:
-
+	Client：接受cmd命令，get/put filename，然后将文件信息打成json包，
+	先发送过去。确认后若是put即开始以line循环形式send文件，若是get即下载文件
 History:
 ----------------------------------------------------------------------------"""
 import socket, os
@@ -16,8 +17,8 @@ class FTP_Client(object):
 	def __init__(self):
 		self.ftp_socket = socket.socket()
 
-	def connection(self, ADDR):
-		self.ftp_socket.connect(ADDR)
+	def connection(self):
+		self.ftp_socket.connect(("127.0.0.1", 8889))
 
 	def help(self):
 		msg = {
@@ -29,7 +30,7 @@ class FTP_Client(object):
 	# 客户端的接口，利用反射进行具体的上传和下载功能
 	def interactive(self):
 		while True:
-			cmd = input('>>:').strip()  # strip()函数功能可以实现对字符串头部和尾部的空格和换行符进行删除处理
+			cmd = input('Input get/put filename:>>').strip()  # strip()函数功能可以实现对字符串头部和尾部的空格和换行符进行删除处理
 			if len(cmd) == 0:
 				continue
 			cmd_order = cmd.split()[0]
@@ -55,7 +56,7 @@ class FTP_Client(object):
 					'overloaded': False
 				}
 				self.ftp_socket.send(json.dumps(msg_dic).encode())
-				# 防止粘包，等待客户端确认
+				# 防止粘包，等待确认
 				server_response = self.ftp_socket.recv(1024).decode()
 				print(server_response)
 				# 发送文件
@@ -85,7 +86,7 @@ class FTP_Client(object):
 			# 接收文件的大小
 			file_size = int(self.ftp_socket.recv(1024).decode())
 			# 向服务器端发送准备接收文件的命令
-			self.ftp_socket.send(b'400 OK!')
+			self.ftp_socket.send(b'DOWNLOAD!')
 			received_size = 0
 			# 检测客户端是否存在该文件
 			if os.path.isfile(filename):
@@ -103,5 +104,5 @@ class FTP_Client(object):
 
 
 Ftp_Client = FTP_Client()
-Ftp_Client.connection(("0.0.0.0", 8889))
+Ftp_Client.connection()
 Ftp_Client.interactive()

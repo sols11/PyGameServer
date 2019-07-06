@@ -3,7 +3,7 @@
 Author:
    caodahan97@126.com
 Date:
-   2019/0INT_SIZE/2INT_SIZE
+   2019/04/24
 Description:
 	协定int为4个字节，即使用Int32。使用大端传输
 	提供辅助方法。如消息打包，字节流操作，类型转换……
@@ -18,7 +18,7 @@ INT_SIZE = 4
 def CreatePackage(name: str, body: str or bytes = b""):
 	"""
 	Send之前都需要先打包，无论body是使用字节流还是Json传输，都可以用这个API打包后发送
-	我们设置包头为一个int数据，记录消息长度 + 一个str数据，记录消息名称
+	我们设置包协议为 int(消息长度) + name(int+str消息名称) + str
 	:param name:
 	:param body:
 	:return:
@@ -28,11 +28,16 @@ def CreatePackage(name: str, body: str or bytes = b""):
 	headPack = size.to_bytes(INT_SIZE, "big")  # 用to_bytes代替struct打包
 	# header = [size]
 	# headPack = struct.pack("!I", *header)
-	headPack = headPack + body
-	return headPack
+	package = headPack + body
+	return package
 
 
 def JsonToData(jsonStr):
+	"""
+	解析Json字符串并返回data，失败抛出JSONDecodeError异常
+	:param jsonStr:
+	:return:
+	"""
 	try:
 		if jsonStr:
 			data = json.loads(jsonStr)

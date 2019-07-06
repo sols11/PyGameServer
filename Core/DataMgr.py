@@ -5,7 +5,8 @@ Author:
 Date:
    2019/04/24
 Description:
-
+	数据库封装.单例模式
+	连接mysql并不需要port
 History:
 ----------------------------------------------------------------------------"""
 import re
@@ -13,10 +14,6 @@ import pymysql
 
 
 class DataMgr:
-	"""
-	数据库封装.单例模式
-	连接并不需要port
-	"""
 
 	def __init__(self):
 		self.username_ = "root"
@@ -73,7 +70,7 @@ class DataMgr:
 			print("[DataMgr] 密码查询失败")
 			return False
 
-# Player相关操作
+	# Player相关操作
 	def CreatePlayer(self, id):
 		sql = r"INSERT INTO `game`.`player` (`id`) VALUES ('{0}');".format(id)
 		try:

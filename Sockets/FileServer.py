@@ -5,10 +5,8 @@ Author:
 Date:
    2019/05/29
 Description:
-	1. 创建一个请求处理的类，并且这个类要继承 BaseRequestHandler，并且还要重写父类里handle()方法；
-	2. 你必须实例化 TCPServer，并且传递server IP和你上面创建的请求处理类，给这个TCPServer；
-	3. server.handle_requese() 只处理一个请求，server.server_forever()处理多个一个请求，永远执行
-	4. 关闭连接server_close()
+	Server：得到client的json包，执行对应方法，如put即发送确认接受应答，然后循环写入文件。
+	get则将文件发送出去
 History:
 ----------------------------------------------------------------------------"""
 import socketserver
@@ -42,7 +40,8 @@ class FileServer(socketserver.BaseRequestHandler):
 		:param argv:
 		:return:
 		"""
-		cmd_str = argv[0]
+		argv_ = argv[0]
+		cmd_str = argv_
 		filename = cmd_str['filename']
 		file_size = cmd_str['size']
 		# 检测服务器端是否存在该文件；如果存在重新命名
@@ -52,7 +51,7 @@ class FileServer(socketserver.BaseRequestHandler):
 			f = open(filename, 'wb')
 
 		# 向客户端发送已经准备好可以接受数据了
-		self.request.send(b'200 OK!')
+		self.request.send(b'UPLOAD!')
 		received_size = 0  # 已经接受的数据大小
 		# 循环接受，写入文件，直到结束
 		while received_size < file_size:
@@ -88,6 +87,6 @@ class FileServer(socketserver.BaseRequestHandler):
 			print('%s is not exisiting in server' % filename)
 
 
-FtpServer = socketserver.TCPServer(("0.0.0.0", 8889), FileServer)
+FtpServer = socketserver.TCPServer(("127.0.0.1", 8889), FileServer)
 print('waiting for connection...')
 FtpServer.serve_forever()
