@@ -2,21 +2,14 @@
 <project version="4">
   <component name="BookmarkManager">
     <bookmark url="file://$PROJECT_DIR$/Sockets/FileServer.py" />
-    <bookmark url="file://$PROJECT_DIR$/Logic/HandlePlayerMsg.py" description="&#10;&#9;def navigate(self, start, end):&#10;&#9;&#9;&quot;&quot;&quot;&#10;&#10;&#9;&#9;:param ..." line="28" />
+    <bookmark url="file://$PROJECT_DIR$/Logic/HandlePlayerMsg.py" description="&#10;&#9;def navigate(self, start, end):&#10;&#9;&#9;&quot;&quot;&quot;&#10;&#10;&#9;&#9;:param ..." line="29" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="97fccf15-8210-43c6-a08d-f34847848d18" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Core/Navigation.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Core/Connection.py" beforeDir="false" afterPath="$PROJECT_DIR$/Core/Connection.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Core/DataMgr.py" beforeDir="false" afterPath="$PROJECT_DIR$/Core/DataMgr.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Core/Main.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Core/Player.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Core/System.py" beforeDir="false" afterPath="$PROJECT_DIR$/Core/System.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Logic/HandleBasicMsg.py" beforeDir="false" afterPath="$PROJECT_DIR$/Logic/HandleBasicMsg.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Logic/HandlePlayerMsg.py" beforeDir="false" afterPath="$PROJECT_DIR$/Logic/HandlePlayerMsg.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Sockets/FileClient.py" beforeDir="false" afterPath="$PROJECT_DIR$/Sockets/FileClient.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Sockets/FileServer.py" beforeDir="false" afterPath="$PROJECT_DIR$/Sockets/FileServer.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -33,7 +26,7 @@
     <SUITE FILE_PATH="coverage/PyGameServer$Connection.coverage" NAME="Connection Coverage Results" MODIFIED="1561974025074" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SocketServer" />
     <SUITE FILE_PATH="coverage/UntiyServer$Socket_Server.coverage" NAME="Socket_Server Coverage Results" MODIFIED="1555125351678" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Sockets" />
     <SUITE FILE_PATH="coverage/PyGameServer$Client.coverage" NAME="Client Coverage Results" MODIFIED="1558335647796" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SocketServer" />
-    <SUITE FILE_PATH="coverage/PyGameServer$Connection__1_.coverage" NAME="Connection (1) Coverage Results" MODIFIED="1562403033782" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Core" />
+    <SUITE FILE_PATH="coverage/PyGameServer$Connection__1_.coverage" NAME="Connection (1) Coverage Results" MODIFIED="1562478962832" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Core" />
     <SUITE FILE_PATH="coverage/UntiyServer$Client.coverage" NAME="Client Coverage Results" MODIFIED="1557806375041" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SocketServer" />
     <SUITE FILE_PATH="coverage/UntiyServer$SocketServerTcp.coverage" NAME="SocketServerTcp Coverage Results" MODIFIED="1555073428632" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Sockets" />
     <SUITE FILE_PATH="coverage/UntiyServer$DataMgr.coverage" NAME="DataMgr Coverage Results" MODIFIED="1556335473799" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Core" />
@@ -91,14 +84,14 @@
     <session id="-1071810452">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="32" />
+          <entry key="project.closed" value="35" />
           <entry key="project.open.time.1" value="1" />
           <entry key="project.open.time.11" value="1" />
           <entry key="project.open.time.12" value="2" />
           <entry key="project.open.time.13" value="1" />
           <entry key="project.open.time.14" value="6" />
           <entry key="project.open.time.15" value="4" />
-          <entry key="project.open.time.16" value="3" />
+          <entry key="project.open.time.16" value="5" />
           <entry key="project.open.time.17" value="3" />
           <entry key="project.open.time.18" value="3" />
           <entry key="project.open.time.19" value="2" />
@@ -108,13 +101,13 @@
           <entry key="project.open.time.30" value="1" />
           <entry key="project.open.time.31" value="1" />
           <entry key="project.open.time.34" value="1" />
-          <entry key="project.opened" value="35" />
+          <entry key="project.opened" value="37" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="pstat" value="1" />
-          <entry key="py" value="64" />
+          <entry key="py" value="73" />
           <entry key="txt" value="4" />
         </counts>
       </usages-collector>
@@ -122,26 +115,99 @@
         <counts>
           <entry key="PLAIN_TEXT" value="4" />
           <entry key="Profiler Session" value="1" />
-          <entry key="Python" value="64" />
+          <entry key="Python" value="73" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="Python Console" value="38" />
           <entry key="dummy" value="62" />
-          <entry key="py" value="7957" />
+          <entry key="py" value="8259" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="PLAIN_TEXT" value="62" />
-          <entry key="Python" value="7995" />
+          <entry key="Python" value="8296" />
+          <entry key="SQL" value="1" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Core/Connection.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2140">
+              <caret line="124" column="16" selection-start-line="124" selection-start-column="16" selection-end-line="124" selection-end-column="16" />
+              <folding>
+                <element signature="e#24#320#1" />
+                <element signature="e#321#334#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Core/DataMgr.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-416">
+              <caret line="99" column="37" selection-start-line="99" selection-start-column="37" selection-end-line="99" selection-end-column="37" />
+              <folding>
+                <marker date="1562478990481" expanded="true" signature="527:598" ph="..." />
+                <marker date="1562478990481" expanded="true" signature="883:1395" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Logic/HandlePlayerMsg.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="380">
+              <caret line="27" column="56" selection-start-line="27" selection-start-column="56" selection-end-line="27" selection-end-column="56" />
+              <folding>
+                <element signature="e#24#256#1" />
+                <element signature="e#257#268#0" expanded="true" />
+                <marker date="1562478363751" expanded="true" signature="619:622" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Core/Navigation.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="260">
+              <caret line="27" selection-start-line="27" selection-end-line="27" />
+              <folding>
+                <element signature="e#25#463#1" />
+                <element signature="e#1374#1603#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Core/System.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="660">
+              <caret line="34" column="4" selection-start-line="34" selection-start-column="4" selection-end-line="34" selection-end-column="4" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Logic/HandleBasicMsg.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="160">
+              <caret line="31" column="20" selection-start-line="31" selection-start-column="20" selection-end-line="31" selection-end-column="20" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -188,18 +254,18 @@
         <option value="$PROJECT_DIR$/Logic/HandleBasicMgs.py" />
         <option value="$PROJECT_DIR$/Core/ProtocolStr.py" />
         <option value="$PROJECT_DIR$/SocketServer/Client.py" />
-        <option value="$PROJECT_DIR$/Logic/HandleBasicMsg.py" />
         <option value="$PROJECT_DIR$/Sockets/FileServer.py" />
         <option value="$PROJECT_DIR$/Sockets/FileClient.py" />
         <option value="$PROJECT_DIR$/Core/Player.py" />
-        <option value="$PROJECT_DIR$/Core/DataMgr.py" />
         <option value="$PROJECT_DIR$/Core/Astar.py" />
         <option value="$PROJECT_DIR$/Core/System.py" />
         <option value="$PROJECT_DIR$/Main.py" />
         <option value="$PROJECT_DIR$/Core/layout.txt" />
         <option value="$PROJECT_DIR$/Core/Navigation.py" />
-        <option value="$PROJECT_DIR$/Logic/HandlePlayerMsg.py" />
         <option value="$PROJECT_DIR$/Core/Connection.py" />
+        <option value="$PROJECT_DIR$/Logic/HandleBasicMsg.py" />
+        <option value="$PROJECT_DIR$/Logic/HandlePlayerMsg.py" />
+        <option value="$PROJECT_DIR$/Core/DataMgr.py" />
       </list>
     </option>
   </component>
@@ -285,7 +351,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.Main (1)">
+  <component name="RunManager" selected="Python.Connection (1)">
     <configuration name="Connection (1)" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="UntiyServer" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -405,8 +471,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.Main (1)" />
         <item itemvalue="Python.Connection (1)" />
+        <item itemvalue="Python.Main (1)" />
         <item itemvalue="Python.Navigation" />
         <item itemvalue="Python.Connection" />
         <item itemvalue="Python.Main" />
@@ -438,7 +504,7 @@
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1295" height="695" extended-state="6" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4972826" visible="true" weight="0.23443815" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4972826" visible="true" weight="0.22392885" />
       <window_info id="Structure" order="1" sideWeight="0.5027174" side_tool="true" weight="0.2287793" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -583,13 +649,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Core/DataMgr.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2120">
-          <caret line="106" selection-start-line="106" selection-end-line="106" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/pydevd.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="84">
@@ -611,31 +670,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Core/System.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="660">
-          <caret line="34" column="4" selection-start-line="34" selection-start-column="4" selection-end-line="34" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Core/Navigation.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1840">
-          <caret line="27" selection-start-line="27" selection-end-line="27" />
-          <folding>
-            <element signature="e#25#463#1" />
-            <element signature="e#1374#1603#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Main.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="198">
           <caret line="17" column="11" lean-forward="true" selection-start-line="17" selection-start-column="11" selection-end-line="17" selection-end-column="11" />
-          <folding>
-            <element signature="e#264#283#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -646,30 +684,75 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Logic/HandleBasicMsg.py">
+    <entry file="file://$PROJECT_DIR$/Core/Navigation.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="298">
-          <caret line="74" column="33" selection-start-line="74" selection-start-column="33" selection-end-line="74" selection-end-column="33" />
+        <state relative-caret-position="260">
+          <caret line="27" selection-start-line="27" selection-end-line="27" />
+          <folding>
+            <element signature="e#25#463#1" />
+            <element signature="e#1374#1603#0" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Logic/HandlePlayerMsg.py">
+    <entry file="file://$PROJECT_DIR$/Core/System.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="11" selection-start-line="11" selection-end-line="11" />
-          <folding>
-            <element signature="e#24#256#1" />
-          </folding>
+        <state relative-caret-position="660">
+          <caret line="34" column="4" selection-start-line="34" selection-start-column="4" selection-end-line="34" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Logic/HandleBasicMsg.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="160">
+          <caret line="31" column="20" selection-start-line="31" selection-start-column="20" selection-end-line="31" selection-end-column="20" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Core/Connection.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="320">
-          <caret line="111" lean-forward="true" selection-start-line="111" selection-end-line="111" />
+        <state relative-caret-position="2140">
+          <caret line="124" column="16" selection-start-line="124" selection-start-column="16" selection-end-line="124" selection-end-column="16" />
           <folding>
             <element signature="e#24#320#1" />
             <element signature="e#321#334#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Core/pymysql/err.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="362">
+          <caret line="108" selection-start-line="108" selection-end-line="108" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Core/pymysql/connections.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="167">
+          <caret line="731" selection-start-line="731" selection-end-line="731" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Logic/HandlePlayerMsg.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="380">
+          <caret line="27" column="56" selection-start-line="27" selection-start-column="56" selection-end-line="27" selection-end-column="56" />
+          <folding>
+            <element signature="e#24#256#1" />
+            <element signature="e#257#268#0" expanded="true" />
+            <marker date="1562478363751" expanded="true" signature="619:622" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Core/DataMgr.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-416">
+          <caret line="99" column="37" selection-start-line="99" selection-start-column="37" selection-end-line="99" selection-end-column="37" />
+          <folding>
+            <marker date="1562478990481" expanded="true" signature="527:598" ph="..." />
+            <marker date="1562478990481" expanded="true" signature="883:1395" ph="..." />
           </folding>
         </state>
       </provider>

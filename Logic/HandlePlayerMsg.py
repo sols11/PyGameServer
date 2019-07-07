@@ -25,7 +25,8 @@ class HandlePlayerMsg:
 
 	@classmethod
 	def MsgSave(cls, conn, bodyStr):
-		DataMgr.Instance.SavePlayer("Anotts", bodyStr)
+		# DataMgr.Instance.SavePlayer("Anotts", bodyStr)
+		pass
 
 	@classmethod
 	def MsgNavigate(cls, conn, bodyStr):

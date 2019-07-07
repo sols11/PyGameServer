@@ -71,7 +71,6 @@ class HandleBasicMsg:
 		if not DataMgr.Instance.CheckPassword(id, pw):
 			conn.send(System.CreatePackage("Login", b"-1"))
 			return
-		pass
 		conn.send(System.CreatePackage("Login", b"0"))
 
 	@classmethod

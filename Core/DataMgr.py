@@ -17,17 +17,46 @@ class DataMgr:
 
 	def __init__(self):
 		self.username_ = "root"
-		self.password_ = "86696686"
-		self.database_ = "game"
+		self.password_ = "123321"
+		self.database_ = "pygameserver"
 		self.db_ = None
-		self.cursor_ = self.connect()
+		self.cursor_ = None
+		self.connect()
+
+	def __delete__(self, instance):
+		if self.db_ is not None:
+			self.db_.commit()
+			self.db_.close()
 
 	def connect(self):
-		self.db_ = pymysql.connect("localhost", self.username_, self.password_, self.database_)
-		return self.db_.cursor()
+		self.db_ = pymysql.connect("localhost", self.username_, self.password_)
+		self.cursor_ = self.db_.cursor()
+		self.CreateSchema()
 
 	def IsSafeString(self, string):
 		return not re.search(r"[-|;|,|\/|\(|\)|\[|\]|\}|\{|%|@|\*|!|\']", string)
+
+	def CreateSchema(self):
+		sql = r"CREATE SCHEMA `pygameserver`;"
+		try:
+			self.cursor_.execute(sql)
+		except:
+			print("[DataMgr] 数据库已存在")
+			self.db_.rollback()
+			self.cursor_.execute(r"use pygameserver")
+			return
+		else:
+			self.cursor_.execute(r"use pygameserver")
+		sql = r"""CREATE TABLE `pygameserver`.`user` (
+  `id` VARCHAR(10) NOT NULL DEFAULT '1',
+  `pw` VARCHAR(20) NOT NULL,
+  PRIMARY KEY (`id`));"""
+		try:
+			self.cursor_.execute(sql)
+		except:
+			print("[DataMgr] 表格已创建")
+			self.db_.rollback()
+		self.db_.commit()
 
 	def CanRegister(self, id: str) -> bool:
 		if not self.IsSafeString(id):
@@ -55,14 +84,15 @@ class DataMgr:
 			print("[DataMgr] 注册失败:")
 			self.db_.rollback()
 			return False
-		self.CreatePlayer(id)
+		self.db_.commit()
+		# self.CreatePlayer(id)
 		return True
 
 	def CheckPassword(self, id, pw) -> bool:
 		if not self.IsSafeString(id) or not self.IsSafeString(pw):
 			print("[DataMgr] CheckPassword 使用非法字符")
 			return False
-		query = r"SELECT * FROM USER WHERE ID='{0}' AND PW='{1};'".format(id, pw)
+		query = r"SELECT * FROM USER WHERE ID='{0}' AND PW='{1}';".format(id, pw)
 		try:
 			self.cursor_.execute(query)
 			return self.cursor_.rowcount != 0
@@ -72,7 +102,7 @@ class DataMgr:
 
 	# Player相关操作
 	def CreatePlayer(self, id):
-		sql = r"INSERT INTO `game`.`player` (`id`) VALUES ('{0}');".format(id)
+		sql = r"INSERT INTO `pygameserver`.`player` (`id`) VALUES ('{0}');".format(id)
 		try:
 			self.cursor_.execute(sql)
 			return True
@@ -93,7 +123,7 @@ class DataMgr:
 			return False
 
 	def SavePlayer(self, id, xmlStr):
-		sql = r"UPDATE `game`.`player` SET `data` = '{0}'  WHERE (`id` = '{1}')".format(xmlStr, id)
+		sql = r"UPDATE `pygameserver`.`player` SET `data` = '{0}'  WHERE (`id` = '{1}')".format(xmlStr, id)
 		try:
 			self.cursor_.execute(sql)
 			return True
